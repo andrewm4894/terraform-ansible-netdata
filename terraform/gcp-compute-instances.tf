@@ -28,5 +28,10 @@ resource "google_compute_instance" "netdata" {
 
   metadata_startup_script = "echo hello world"
 
+  metadata = {
+    ssh-keys = "${var.gcp_ssh_user}:${file(var.gcp_ssh_pub_key_file)}"
+  }
+
 }
+
 
